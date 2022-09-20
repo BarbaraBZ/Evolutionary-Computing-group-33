@@ -4,6 +4,8 @@
 # karine.smiras@gmail.com      #
 ################################
 
+# test van go
+
 # imports framework
 import sys, os
 sys.path.insert(0, 'evoman')
