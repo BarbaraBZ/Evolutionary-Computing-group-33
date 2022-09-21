@@ -69,6 +69,37 @@ def sim(env, x):
         # doomsday (removing part of the population if nothing improves for a few generations)
             # use a counter for determining whether solu
 
+# evaluation
+# copied from demo
+def evaluate(x):
+    return np.array(list(map(lambda y: simulation(env,y), x)))
+
+# survivor selection
+# can be used for mu, lambda and mu + lambda, depending on whether parents are in input
+def survivor_selection(pop):
+    fit_pop = {}
+    fitness = evaluate(pop)
+
+    # make a dict to link individuals to respective fitness
+    for i in range(len(pop)):
+        fit_pop[fitness[i]] = pop[i]
+    
+    # sort fitness frm high to low
+    fitness.sort(reverse = True)
+
+    # select fittest individuals
+    best_fit = fitness[0:pop_size]
+    
+    # add individuals to new generation
+    new_gen = []
+
+     for fit in best_fit:
+        new_gen.append(fit_pop[fit])
+    
+    return new_gen
+    
+
+
 # loads file with the best solution for testing
 if run_mode =='test':
 
