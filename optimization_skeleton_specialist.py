@@ -10,6 +10,7 @@ sys.path.insert(0, 'evoman')
 from environment import Environment
 from demo_controller import player_controller
 import numpy as np
+import random
 
 experiment_name = 'dummy_demo'
 if not os.path.exists(experiment_name):
@@ -65,6 +66,24 @@ def sim(env, x):
             # crossover
 
     # selection (e.g. tournament)
+def tournament(pop, k):
+    individuals = pop.shape[0]
+    winner = randint(0, individuals)
+    score = sim(env, winner)
+    for i in range(k-1):
+        opponent = randint(0, number_individuals)
+        opp_score = sim(env, opponent)
+        if opp_score > score:
+            winner = opponent
+            score = opp_score
+    return winner
+
+def ranking_selection(pop, fit_pop):
+    sorted_fitness = sorted(fit_pop)
+    ranks = [sorted_fitness.index(x)+1 for x in fit_pop]
+    probs = [rank/len(fit_pop) for rank in ranks]
+    parent = np.random.choice(pop, p=probs)
+    return parent
         # evaluation
         # doomsday (removing part of the population if nothing improves for a few generations)
             # use a counter for determining whether solu
