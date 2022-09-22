@@ -59,9 +59,24 @@ def sim(env, x):
     # for normalization (?)
 
     # enforcing weight limits
+def lims(weight):
+    if weight >= Ui:
+        return Ui
+    if weight <= Li:
+        return Li
 
     # variation
-        # mutation
+    # mutation
+def mutate(offspring):
+    # kleinere sigma, minder grote verschillen --> uitproberen
+    sigma = 2
+    # hogere mutation rate, vaker een aanpassing
+    mutationrate = 0.2
+    mean = 0
+    for i in range(0, len(offspring[f])):
+        if np.random.unform(0, 1) <= mutationrate:
+            offspring[f][i] = offspring[f][i] + np.random.gaus(mean, sigma)
+    return offspring
         # recombination
             # crossover
 
