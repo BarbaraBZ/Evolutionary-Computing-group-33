@@ -71,10 +71,9 @@ def mutate(offspring):
     # kleinere sigma, minder grote verschillen --> uitproberen
     sigma = 2
     # hogere mutation rate, vaker een aanpassing
-    mutationrate = 0.2
     mean = 0
     for i in range(0, len(offspring[f])):
-        if np.random.unform(0, 1) <= mutationrate:
+        if np.random.unform(0, 1) <= mutation:
             offspring[f][i] = offspring[f][i] + np.random.gaus(mean, sigma)
     return offspring
         # recombination
