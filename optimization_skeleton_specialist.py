@@ -11,8 +11,9 @@ from environment import Environment
 from demo_controller import player_controller
 import numpy as np
 import random
+import time
 
-experiment_name = 'dummy_demo'
+experiment_name = 'skeleton'
 if not os.path.exists(experiment_name):
     os.makedirs(experiment_name)
 
@@ -22,8 +23,8 @@ if headless:
     os.environ["SDL_VIDEODRIVER"] = "dummy"
 
 hidden = 5      # number of hidden nodes in the neural network
-pop_size = 30   # population size
-gens = 10       # number of generations
+pop_size = 100   # population size
+gens = 20       # number of generations
 Li = -1         # lower bound for network weights
 Ui = 1          # upper bound for network weights
 mutation = 0.2  # mutation rate
@@ -60,47 +61,86 @@ def sim(env, x):
 
     # enforcing weight limits
 def lims(weight):
-    if weight >= Ui:
+    if weight > Ui:
         return Ui
-    if weight <= Li:
+    if weight < Li:
         return Li
+    else:
+        return weight
 
     # variation
     # mutation
 def mutate(offspring):
     # kleinere sigma, minder grote verschillen --> uitproberen
-    sigma = 2
+    sigma = 0.1
     # hogere mutation rate, vaker een aanpassing
     mean = 0
-    for i in range(0, len(offspring[f])):
-        if np.random.unform(0, 1) <= mutation:
-            offspring[f][i] = offspring[f][i] + np.random.gaus(mean, sigma)
-    return offspring
+    mutated = offspring
+    for i in range(0, len(offspring[0])):
+        x = np.random.uniform(0, 1)
+        if x <= mutation:
+            mutated[0][i] = offspring[0][i] + np.random.normal(mean, sigma)
+    return mutated
         # recombination
             # crossover
 
     # selection (e.g. tournament)
-def tournament(pop, k):
+def tournament(pop, fit_pop, k):
     individuals = pop.shape[0]
-    winner = randint(0, individuals)
-    score = sim(env, winner)
+    winner = np.random.randint(0, individuals)
+    score = fit_pop[winner]
     for i in range(k-1):
-        opponent = randint(0, number_individuals)
-        opp_score = sim(env, opponent)
+        opponent = np.random.randint(0, individuals)
+        opp_score = fit_pop[opponent]
         if opp_score > score:
             winner = opponent
             score = opp_score
     return winner
 
+def evaluate(x):
+    return np.array(list(map(lambda y: sim(env,y), x)))
+
 def ranking_selection(pop, fit_pop):
     sorted_fitness = sorted(fit_pop)
     ranks = [sorted_fitness.index(x)+1 for x in fit_pop]
-    probs = [rank/len(fit_pop) for rank in ranks]
-    parent = np.random.choice(pop, p=probs)
-    return parent
+    probs = np.array([rank/sum(ranks) for rank in ranks])
+    parent = np.random.choice(len(fit_pop), p=probs)
+    return pop[parent]
         # evaluation
         # doomsday (removing part of the population if nothing improves for a few generations)
             # use a counter for determining whether solu
+
+# def crossover(pop, fit_pop):
+#     total_offspring = np.zeros((0, n_vars))
+#
+#     for p in range(0, pop.shape[0], 2):
+#         p1 = ranking_selection(pop, fit_pop)
+#         p2 = ranking_selection(pop, fit_pop)
+#
+#         n_offspring = np.random.randint(1, 3 + 1, 1)[0]
+#         offspring = np.zeros((n_offspring, n_vars))
+#
+#         for f in range(0, n_offspring):
+#             cross_prop = np.random.uniform(0, 1)
+#             offspring[f] = p1 * cross_prop + p2 * (1 - cross_prop)
+#
+#             offspring = mutate(offspring)
+#             offspring[f] = np.array(list(map(lambda y: lims(y), offspring[f])))
+#
+#             total_offspring = np.vstack((total_offspring, offspring[f]))
+#
+#     return total_offspring
+
+def crossover(p1, p2):
+    # n_offspring = the number of offspring, decided by mutation?
+    offspring = np.zeros((1, n_vars))
+    # Discrete recombination:
+    for j in range(0, len(p1)):
+        choice = random.choice([p1[j], p2[j]])
+        offspring[0][j] = choice
+    offspring = mutate(offspring)
+    offspring = np.array(list(map(lambda y: lims(y), offspring[0])))
+    return offspring
 
 # loads file with the best solution for testing
 if run_mode =='test':
@@ -157,14 +197,31 @@ last_sol = fit_pop[best] # best result of the first generation (or best solution
 
 for i in range(ini_g+1, gens):
     # create offspring
+    total_offspring = np.zeros((0, n_vars))
+    for p in range(0, pop.shape[0], 2):
+        p1 = ranking_selection(pop, fit_pop)
+        p2 = ranking_selection(pop, fit_pop)
+
+        n_offspring = 2
+        for l in range(n_offspring):
+            offspring = crossover(p1, p2)
+            total_offspring = np.vstack((total_offspring, offspring))
+
         # incorporate:
             # parent selection (e.g. tournament)
             # crossover
             # mutation
-
     # evaluate their fitness
+    fit_offspring = evaluate(total_offspring)
+    best = np.argmax(fit_offspring)
+    best_sol = fit_pop[best]
 
     # perform selection:
+    chosen = [tournament(total_offspring, fit_offspring, 2) for j in range(pop_size)]
+    chosen = np.append(chosen[1:], best)
+    pop = total_offspring[chosen]
+    fit_pop = fit_offspring[chosen]
+
         # depends on what type of selection we do, whether we look at entire generation or just children
 
     # optional: use doomsday to kill the weakest part of the population and replace it with new best/random solutions
