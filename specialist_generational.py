@@ -31,6 +31,7 @@ Ui = 1          # upper bound for network weights
 mutation = 0.2  # mutation rate
 tournament_size = 5
 kill_percentage = 0.25
+runs = 10
 
 # initializes environment with ai player using random controller, playing against static enemy
 env = Environment(experiment_name=experiment_name,
@@ -176,20 +177,23 @@ def doomsday(pop, fit_pop):
 
 
 if __name__ == "__main__":
+    file_aux  = open(experiment_name+'/results.txt','a')
+    file_aux.write('run,gen,best,mean,std')
+    file_aux.close()
+    for j in range(1, runs+1):
+        # loads file with the best solution for testing
+        if run_mode =='test':
 
-    # loads file with the best solution for testing
-    if run_mode =='test':
+            bsol = np.loadtxt(experiment_name+'/best.txt')
+            print( '\n RUNNING SAVED BEST SOLUTION \n')
+            env.update_parameter('speed','normal')
+            evaluate([bsol])
 
-        bsol = np.loadtxt(experiment_name+'/best.txt')
-        print( '\n RUNNING SAVED BEST SOLUTION \n')
-        env.update_parameter('speed','normal')
-        evaluate([bsol])
+            sys.exit(0)
 
-        sys.exit(0)
+        # initialize population from old solutions or new ones
 
-    # initialize population from old solutions or new ones
-
-    if not os.path.exists(experiment_name+'/evoman_solstate'):
+        # if not os.path.exists(experiment_name+'/evoman_solstate'):
 
         print( '\nNEW EVOLUTION\n')
 
@@ -204,117 +208,116 @@ if __name__ == "__main__":
         total_best = pop[best]
         total_best_fitness = fit_pop[best]
 
-    else:
-        print( '\nCONTINUING EVOLUTION\n')
+        # else:
+        #     print( '\nCONTINUING EVOLUTION\n')
+        #
+        #     env.load_state()
+        #     pop = env.solutions[0]
+        #     fit_pop = env.solutions[1]
+        #
+        #     best = np.argmax(fit_pop)
+        #     mean = np.mean(fit_pop)
+        #     std = np.std(fit_pop)
+        #     total_best = pop[best]
+        #     total_best_fitness = fit_pop[best]
+        #
+        #     # finds last generation number
+        #     file_aux  = open(experiment_name+'/gen.txt','r')
+        #     ini_g = int(file_aux.readline())
+        #     file_aux.close()
 
-        env.load_state()
-        pop = env.solutions[0]
-        fit_pop = env.solutions[1]
-
-        best = np.argmax(fit_pop)
-        mean = np.mean(fit_pop)
-        std = np.std(fit_pop)
-        total_best = pop[best]
-        total_best_fitness = fit_pop[best]
-
-        # finds last generation number
-        file_aux  = open(experiment_name+'/gen.txt','r')
-        ini_g = int(file_aux.readline())
+        # saves results for first pop
+        file_aux  = open(experiment_name+'/results.txt','a')
+        print( '\n RUN' + str(j) + '\n' + '\n GENERATION '+str(ini_g)+' '+str(round(fit_pop[best],6))+' '+str(round(mean,6))+' '+str(round(std,6)))
+        file_aux.write('\n'+str(j)+ ','+str(ini_g)+','+str(fit_pop[best])+','+str(mean)+','+str(std))
         file_aux.close()
 
-    # saves results for first pop
-    file_aux  = open(experiment_name+'/results.txt','a')
-    file_aux.write('\n\ngen best mean std')
-    print( '\n GENERATION '+str(ini_g)+' '+str(round(fit_pop[best],6))+' '+str(round(mean,6))+' '+str(round(std,6)))
-    file_aux.write('\n'+str(ini_g)+' '+str(round(fit_pop[best],6))+' '+str(round(mean,6))+' '+str(round(std,6))   )
-    file_aux.close()
 
+        ####### do the actual evolution here #######
 
-    ####### do the actual evolution here #######
+        last_sol = fit_pop[best] # best result of the first generation (or best solution from the previous evolution)
+        notimproved = 0 #PART OF DOOMSDAY
 
-    last_sol = fit_pop[best] # best result of the first generation (or best solution from the previous evolution)
-    notimproved = 0 #PART OF DOOMSDAY
+        for i in range(ini_g+1, gens):
+            # create offspring
+            total_offspring = np.zeros((0, n_vars))
+            for p in range(0, pop.shape[0]):
 
-    for i in range(ini_g+1, gens):
-        # create offspring
-        total_offspring = np.zeros((0, n_vars))
-        for p in range(0, pop.shape[0]):
+                # select parents by ranking selection
+                # p1 = ranking_selection(pop, fit_pop)
+                # p2 = ranking_selection(pop, fit_pop)
 
-            # select parents by ranking selection
-            # p1 = ranking_selection(pop, fit_pop)
-            # p2 = ranking_selection(pop, fit_pop)
+                # select parents by tournament selection
+                p1 = pop[tournament(pop, fit_pop, 2)]
+                p2 = pop[tournament(pop, fit_pop, 2)]
 
-            # select parents by tournament selection
-            p1 = pop[tournament(pop, fit_pop, 2)]
-            p2 = pop[tournament(pop, fit_pop, 2)]
+                n_offspring = 2
+                for l in range(n_offspring):
+                    # crossover and mutation
+                    offspring = crossover(p1, p2)
+                    total_offspring = np.vstack((total_offspring, offspring))
 
-            n_offspring = 2
-            for l in range(n_offspring):
-                # crossover and mutation
-                offspring = crossover(p1, p2)
-                total_offspring = np.vstack((total_offspring, offspring))
+            # evaluate their fitness (concurrent)
+            with concurrent.futures.ProcessPoolExecutor() as executor:
+                results = executor.map(sim, total_offspring)
+                fit_offspring = [result for result in results]
+            fit_offspring = np.array(fit_offspring)
+            best = np.argmax(fit_offspring)
+            best_sol = fit_offspring[best]
 
-        # evaluate their fitness (concurrent)
-        with concurrent.futures.ProcessPoolExecutor() as executor:
-            results = executor.map(sim, total_offspring)
-            fit_offspring = [result for result in results]
-        fit_offspring = np.array(fit_offspring)
-        best = np.argmax(fit_offspring)
-        best_sol = fit_offspring[best]
+            # perform selection (in this case: tournament selection for just the children):
+            chosen = [tournament(total_offspring, fit_offspring, tournament_size) for j in range(pop_size)]
+            chosen = np.append(chosen[1:], best)
+            pop = total_offspring[chosen]
+            fit_pop = fit_offspring[chosen]
 
-        # perform selection (in this case: tournament selection for just the children):
-        chosen = [tournament(total_offspring, fit_offspring, tournament_size) for j in range(pop_size)]
-        chosen = np.append(chosen[1:], best)
-        pop = total_offspring[chosen]
-        fit_pop = fit_offspring[chosen]
+            # optional: use doomsday to kill the weakest part of the population and replace it with new best/random solutions
+            # searching new areas, DOOMSDAY
 
-        # optional: use doomsday to kill the weakest part of the population and replace it with new best/random solutions
-        # searching new areas, DOOMSDAY
+            notimproved += 1
+            if notimproved >= 10:
+                file_aux = open(experiment_name + '/results.txt', 'a')
+                file_aux.write('\ndoomsday')
+                file_aux.close()
 
-        notimproved += 1
-        if notimproved >= 10:
-            file_aux = open(experiment_name + '/results.txt', 'a')
-            file_aux.write('\ndoomsday')
+                pop, fit_pop = doomsday(pop, fit_pop)
+                notimproved = 0
+
+            best = np.argmax(fit_pop)   # highest fitness in the new population
+            std = np.std(fit_pop)       # std of fitness in the new population
+            mean = np.mean(fit_pop)     # mean fitness in the new population
+
+            if fit_pop[best] >= total_best_fitness:
+                total_best = pop[best]
+                total_best_fitness = fit_pop[best]
+
+            # save results
+            file_aux  = open(experiment_name+'/results.txt','a')
+            print( '\n RUN' + str(j) + '\n' + '\n GENERATION '+str(i)+' '+str(round(fit_pop[best],6))+' '+str(round(mean,6))+' '+str(round(std,6)))
+            file_aux.write('\n'+str(j)+','+str(i)+','+str(fit_pop[best])+','+str(mean)+','+str(std))
             file_aux.close()
 
-            pop, fit_pop = doomsday(pop, fit_pop)
-            notimproved = 0
+            # saves generation number
+            file_aux  = open(experiment_name+'/gen.txt','w')
+            file_aux.write(str(i))
+            file_aux.close()
 
-        best = np.argmax(fit_pop)   # highest fitness in the new population
-        std = np.std(fit_pop)       # std of fitness in the new population
-        mean = np.mean(fit_pop)     # mean fitness in the new population
+            # saves file with the best solution
+            np.savetxt(experiment_name+'/best.txt',pop[best])
 
-        if fit_pop[best] >= total_best_fitness:
-            total_best = pop[best]
-            total_best_fitness = fit_pop[best]
-
-        # save results
-        file_aux  = open(experiment_name+'/results.txt','a')
-        print( '\n GENERATION '+str(i)+' '+str(round(fit_pop[best],6))+' '+str(round(mean,6))+' '+str(round(std,6)))
-        file_aux.write('\n'+str(i)+' '+str(round(fit_pop[best],6))+' '+str(round(mean,6))+' '+str(round(std,6))   )
-        file_aux.close()
-
-        # saves generation number
-        file_aux  = open(experiment_name+'/gen.txt','w')
-        file_aux.write(str(i))
-        file_aux.close()
-
-        # saves file with the best solution
-        np.savetxt(experiment_name+'/best.txt',pop[best])
-
-        # saves simulation state
-        solutions = [pop, fit_pop]
-        env.update_solutions(solutions)
-        env.save_state()
+            # saves simulation state
+            solutions = [pop, fit_pop]
+            env.update_solutions(solutions)
+            env.save_state()
 
 
-    # end timer and print
-    fim = time.time()
-    print( '\nExecution time: '+str(round((fim-ini)/60))+' minutes \n')
+        # end timer and print
+        fim = time.time()
+        print( '\nExecution time: '+str(round((fim-ini)/60))+' minutes \n')
 
-    file = open(experiment_name+'/neuroended', 'w')  # saves control (simulation has ended) file for bash loop file
-    file.close()
+        file = open(experiment_name+'/neuroended', 'w')  # saves control (simulation has ended) file for bash loop file
+        file.close()
 
-    np.savetxt(experiment_name+'/total_best.txt', total_best)
+        np.savetxt(experiment_name+'/total_best.txt', total_best)
 
-    env.state_to_log() # checks environment state
+        env.state_to_log() # checks environment state
