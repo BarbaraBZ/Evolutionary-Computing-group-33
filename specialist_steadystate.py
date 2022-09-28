@@ -35,7 +35,7 @@ runs = 10
 
 # initializes environment with ai player using random controller, playing against static enemy
 env = Environment(experiment_name=experiment_name,
-                  enemies=[1],
+                  enemies=[6],
                   playermode='ai',
                   player_controller=player_controller(hidden),
                   enemymode="static",
@@ -277,9 +277,9 @@ if __name__ == "__main__":
 
             notimproved += 1
             if notimproved >= 10:
-                file_aux = open(experiment_name + '/results.txt', 'a')
-                file_aux.write('\ndoomsday')
-                file_aux.close()
+                # file_aux = open(experiment_name + '/results.txt', 'a')
+                # file_aux.write('\ndoomsday')
+                # file_aux.close()
 
                 pop, fit_pop = doomsday(pop, fit_pop)
                 notimproved = 0
