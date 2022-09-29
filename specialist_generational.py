@@ -184,7 +184,7 @@ if __name__ == "__main__":
         # loads file with the best solution for testing
         if run_mode =='test':
 
-            bsol = np.loadtxt(experiment_name+'/best.txt')
+            bsol = np.loadtxt(experiment_name+'/total_best.txt')
             print( '\n RUNNING SAVED BEST SOLUTION \n')
             env.update_parameter('speed','normal')
             evaluate([bsol])
