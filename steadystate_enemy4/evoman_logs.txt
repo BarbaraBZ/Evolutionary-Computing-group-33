@@ -1,0 +1,741 @@
+
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+MESSAGE: Pygame initialized for simulation.
+
+########## Simulation state - INI ###########
+
+# solutions # : EMPTY 
+
+# sensors # : 20
+
+ ------  parameters ------  
+
+# contact hurt (training agent) # : player
+
+multiple mode: no
+
+enemies list: 4
+
+current enemy: 4
+
+player mode: ai
+
+########## Simulation state - INI ###########
+
+enemy mode: static
+
+# solutions # : EMPTY 
+
+level: 2
+
+clock precision: low
+
+inputs coded: no
+
+random initialization: no
+
+# sensors # : 20
+
+expiration time: 3000
+
+ ------  parameters ------  
+
+speed: fastest
+
+# contact hurt (training agent) # : player
+
+load player: yes
+
+multiple mode: no
+
+load enemy: yes
+
+enemies list: 4
+
+sound: off
+
+########## Simul
+
+########## Simulation state - INI ###########
+
+logs: on
+
+# solutions # : EMPTY 
+
+player mode: ai
+
+# solutions # : EMPTY 
+
+save logs: yes
+
+enemy mode: static
+
+# sensors # : 20
+
+# sensors # : 20
+
+########## Simulation state - INI ###########
+
+########## Simulation state - END ###########
+
+level: 2
+
+ ------  parameters ------  
+
+ ------  parameters ------  
+
+# solutions # : EMPTY 
+
+clock precision: low
+
+# contact hurt (training agent) # : player
+
+# sensors # : 20
+
+inputs coded: no
+
+multiple mode: no
+
+ ------  parameters ------  
+
+multiple mode: no
+
+random initialization: no
+
+enemies list: 4
+
+# contact hurt (training agent) # : player
+
+enemies list: 4
+
+expiration time: 3000
+
+multiple mode: no
+
+current enemy: 4
+
+player mode: ai
+
+speed: fastest
+
+enemies list: 4
+
+player mode: ai
+
+enemy mode: static
+
+current enemy: 4
+
+########## Simulation state - INI ###########
+
+level: 2
+
+load enemy: yes
+
+player mode: ai
+
+enemy mode: static
+
+clock precision: low
+
+# solutions # : EMPTY 
+
+level: 2
+
+enemy mode: static
+
+inputs coded: no
+
+# sensors # : 2000
+
+level: 2
+
+clock precision: low
+
+random initialization: no
+
+logs: on
+
+ ------  parameters ------  
+
+########## Simulation state - INI ###########
+
+clock precision:
+
+expiration time: 3000
+
+save logs: yes
+
+# contact hurt (training agent) # : player
+
+# solutions # : EMPTY 
+
+random initialization: no
+
+inputs coded: no
+
+########## Simulation state - END ###########
+
+multiple mode: no
+
+# sensors # : 20
+
+expiration time: 3000
+
+load player: yesation: no
+
+enemies list: 4
+
+ ------  parameters ------  
+
+speed: fastest
+
+load enemy: yes
+
+expiration time: 3000
+
+########## Simulation state - INI ###########
+
+# contact hurt (training agent) # : player
+
+load player: yes
+
+sound: off
+
+speed: fastest
+
+# solutions # : EMPTY 
+
+player mode: ai
+
+load enemy: yes
+
+multiple mode: no
+
+overture time: 100
+
+load player: yes
+
+# sensors # : 20
+
+enemy mode: static
+
+sound: off
+
+enemies list: 4
+
+logs: on
+
+load enemy: yes
+
+ ------  parameters ------  
+
+level: 2
+
+overture time: 100
+
+current enemy: 4
+
+# contact hurt (training agent) # : player
+
+clock precision: low
+
+save logs: yes
+
+player mode: ai
+
+multiple mode: no
+
+inputs coded: no00
+
+save logs: yesulation state - END ###########
+
+enemies list: 4
+
+random initialization: no
+
+enemy mode: static
+
+current enemy: 4
+
+save logs: yes
+
+expiration time: 3000
+
+########## Simulation state - END ###########
+
+level: 2
+
+########## Simulation state - END ###########
+
+speed: fastest
+
+clock precision: low
+
+enemy mode: static
+
+load player: yes
+
+inputs coded: no
+
+level: 2
+
+load enemy: yes
+
+random initialization: no
+
+clock precision: low
+
+sound: off
+
+expiration time: 3000
+
+inputs coded: no
+
+speed: fastest
+
+overture time: 100
+
+logs: on
+
+random initialization: no
+
+load enemy: yes
+
+expiration time: 3000
+
+sound: off
+
+########## Simulation state - END ###########
+
+speed: fastest
+
+overture time: 100
+
+load player: yes
+
+logs: on
+
+load enemy: yes
+
+########## Simulation state - INI ###########
+
+sound: off yes
+
+# solutions # : EMPTY 
+
+########## Simulation state - END ###########
+
+overture time: 100
+
+# sensors # : 20
+
+logs: on
+
+ ------  parameters ------  
+
+save logs: yes
+
+# contact hurt (training agent) # : player
+
+########## Simulation state - END ###########
+
+########## Simulation state - INI ###########
+
+enemies list: 4 EMPTY 
+
+current enemy: 4
+
+# sensors # : 20
+
+player mode: ai
+
+ ------  parameters ------  
+
+enemy mode: static
+
+# contact hurt (training agent) # : player
+
+level: 2
+
+clock precision: low
+
+enemies list: 4
+
+inputs coded: no
+
+current enemy: 4ation: note - INI ###########
+
+expiration time: 3000
+
+# solutions # : EMPTY 
+
+player mode: ai
+
+speed: fastest
+
+# sensors # : 20ic
+
+load player: yes
+
+level: 2 parameters ------  
+
+load enemy: yes
+
+clock precision: low
+
+# contact hurt (training agent) # : player
+
+inputs coded: no
+
+multiple mode: no
+
+random initialization: no
+
+overture time: 100
+
+expiration time: 3000
+
+save logs: yes
+
+current enemy: 4
+
+########## Simulation state - INI ###########
+
+load player: yesEMPTY 
+
+load enemy: yes
+
+# sensors # : 20
+
+ ------  parameters ------  
+
+sound: off
+
+# contact hurt (training agent) # : player
+
+logs: on
+
+multiple mode: no
+
+random initialization: no
+
+save logs: yes
+
+expiration time: 3000 state - END ###########
+
+enemies list: 4
+
+speed: fastest 4
+
+player mode: ai
+
+load player: yes
+
+enemy mode: static
+
+load enemy: yes
+
+level: 2
+
+sound: off
+
+clock precision: low
+
+overture time: 100
+
+inputs coded: no
+
+logs: on
+
+save logs: yes
+
+random initialization: no
+
+########## Simulation state - END ###########
+
+expiration time: 3000
+
+speed: fastest
+
+load player: yes
+
+load enemy: yes
+
+sound: off
+
+overture time: 100
+
+logs: on
+
+save logs: yes
+
+########## Simulation state - END ###########
+
+RUN: run status: enemy: 4; fitness: 3.3652103968307507; player life: 0; enemy life: 90.0; time: 280
+
+RUN: run status: enemy: 4; fitness: 3.3335733118875677; player life: 0; enemy life: 90.0; time: 289
+
+RUN: run status: enemy: 4; fitness: 3.2764148980476193; player life: 0; enemy life: 90.0; time: 306
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 21.222347676777343; player life: 0; enemy life: 70.0; time: 323
+
+RUN: run status: enemy: 4; fitness: 21.228558876869982; player life: 0; enemy life: 70.0; time: 321
+
+RUN: run status: enemy: 4; fitness: 21.234808897215157; player life: 0; enemy life: 70.0; time: 319
+
+RUN: run status: enemy: 4; fitness: 21.070410856610106; player life: 0; enemy life: 70.0; time: 376
+
+RUN: run status: enemy: 4; fitness: 2.9408768044182034; player life: 0; enemy life: 90.0; time: 428
+
+RUN: run status: enemy: 4; fitness: 3.3335733118875677; player life: 0; enemy life: 90.0; time: 289
+
+RUN: run status: enemy: 4; fitness: 20.58163506406379; player life: 0; enemy life: 70.0; time: 613
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 21.222347676777343; player life: 0; enemy life: 70.0; time: 323
+
+RUN: run status: enemy: 4; fitness: 21.231679004206228; player life: 0; enemy life: 70.0; time: 320
+
+RUN: run status: enemy: 4; fitness: 29.888532660497322; player life: 0; enemy life: 60.0; time: 451
+
+RUN: run status: enemy: 4; fitness: 3.250607014091747; player life: 0; enemy life: 90.0; time: 314
+
+RUN: run status: enemy: 4; fitness: 3.2764148980476193; player life: 0; enemy life: 90.0; time: 306
+
+RUN: run status: enemy: 4; fitness: 3.3652103968307507; player life: 0; enemy life: 90.0; time: 280
+
+RUN: run status: enemy: 4; fitness: 3.3335733118875677; player life: 0; enemy life: 90.0; time: 289
+
+RUN: run status: enemy: 4; fitness: 3.067754812551989; player life: 0; enemy life: 90.0; time: 377
+
+RUN: run status: enemy: 4; fitness: 56.311645286053235; player life: 0; enemy life: 30.0; time: 803
+
+RUN: run status: enemy: 4; fitness: 3.3335733118875677; player life: 0; enemy life: 90.0; time: 289
+
+RUN: run status: enemy: 4; fitness: 88.3387169655284; player life: 51.40000000000031; enemy life: 0; time: 899
+
+RUN: run status: enemy: 4; fitness: 86.7241067789025; player life: 38.20000000000028; enemy life: 0; time: 1207
+
+RUN: run status: enemy: 4; fitness: 3.4431719383004626; player life: 0; enemy life: 90.0; time: 259
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 88.85961591781404; player life: 57.400000000000325; enemy life: 0; time: 973
+
+RUN: run status: enemy: 4; fitness: 86.26229232283998; player life: 35.20000000000027; enemy life: 0; time: 1419
+
+RUN: run status: enemy: 4; fitness: 47.413828345145326; player life: 0; enemy life: 40.0; time: 725
+
+RUN: run status: enemy: 4; fitness: 12.197881624622937; player life: 0; enemy life: 80.0; time: 331
+
+RUN: run status: enemy: 4; fitness: 88.50875562139875; player life: 53.200000000000315; enemy life: 0; time: 908
+
+RUN: run status: enemy: 4; fitness: 2.9526278209537224; player life: 0; enemy life: 90.0; time: 423
+
+RUN: run status: enemy: 4; fitness: 21.179917069647637; player life: 0; enemy life: 70.0; time: 337
+
+RUN: run status: enemy: 4; fitness: 2.9526278209537224; player life: 0; enemy life: 90.0; time: 423
+
+RUN: run status: enemy: 4; fitness: 3.3795991342828504; player life: 0; enemy life: 90.0; time: 276
+
+RUN: run status: enemy: 4; fitness: 29.890752417235635; player life: 0; enemy life: 60.0; time: 450
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 21.25699681219052; player life: 0; enemy life: 70.0; time: 312
+
+RUN: run status: enemy: 4; fitness: 3.2928897352511246; player life: 0; enemy life: 90.0; time: 301
+
+RUN: run status: enemy: 4; fitness: 21.09463815194543; player life: 0; enemy life: 70.0; time: 367
+
+RUN: run status: enemy: 4; fitness: 30.078421580356185; player life: 0; enemy life: 60.0; time: 373
+
+RUN: run status: enemy: 4; fitness: 89.30031615015261; player life: 62.20000000000034; enemy life: 0; time: 1012
+
+RUN: run status: enemy: 4; fitness: 88.19961591781401; player life: 50.80000000000031; enemy life: 0; time: 973
+
+RUN: run status: enemy: 4; fitness: 88.0702062624876; player life: 49.000000000000306; enemy life: 0; time: 925
+
+RUN: run status: enemy: 4; fitness: 2.9526278209537224; player life: 0; enemy life: 90.0; time: 423
+
+RUN: run status: enemy: 4; fitness: 2.9526278209537224; player life: 0; enemy life: 90.0; time: 423
+
+RUN: run status: enemy: 4; fitness: 29.89744140538643; player life: 0; enemy life: 60.0; time: 447
+
+RUN: run status: enemy: 4; fitness: 89.12031615015262; player life: 60.40000000000033; enemy life: 0; time: 1012
+
+RUN: run status: enemy: 4; fitness: 3.067754812551989; player life: 0; enemy life: 90.0; time: 377
+
+RUN: run status: enemy: 4; fitness: 56.316639054233725; player life: 0; enemy life: 30.0; time: 799
+
+RUN: run status: enemy: 4; fitness: 3.4705709124885766; player life: 0; enemy life: 90.0; time: 252
+
+RUN: run status: enemy: 4; fitness: 21.21925648420767; player life: 0; enemy life: 70.0; time: 324
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 56.43473502996464; player life: 0; enemy life: 30.0; time: 710
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 2.983842840301646; player life: 0; enemy life: 90.0; time: 410
+
+RUN: run status: enemy: 4; fitness: 3.250607014091747; player life: 0; enemy life: 90.0; time: 314
+
+RUN: run status: enemy: 4; fitness: 21.24109822612272; player life: 0; enemy life: 70.0; time: 317
+
+RUN: run status: enemy: 4; fitness: 3.250607014091747; player life: 0; enemy life: 90.0; time: 314
+
+RUN: run status: enemy: 4; fitness: 3.2764148980476193; player life: 0; enemy life: 90.0; time: 306
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 12.200907345539473; player life: 0; enemy life: 80.0; time: 330
+
+RUN: run status: enemy: 4; fitness: 21.25699681219052; player life: 0; enemy life: 70.0; time: 312
+
+RUN: run status: enemy: 4; fitness: 21.247427361174367; player life: 0; enemy life: 70.0; time: 315
+
+RUN: run status: enemy: 4; fitness: 64.88198379553467; player life: 0; enemy life: 20.0; time: 1234
+
+RUN: run status: enemy: 4; fitness: 29.904175437567776; player life: 0; enemy life: 60.0; time: 444
+
+RUN: run status: enemy: 4; fitness: 29.9086901179223; player life: 0; enemy life: 60.0; time: 442
+
+RUN: run status: enemy: 4; fitness: 21.197881624622937; player life: 0; enemy life: 70.0; time: 331
+
+RUN: run status: enemy: 4; fitness: 3.1001026464175085; player life: 0; enemy life: 90.0; time: 365
+
+RUN: run status: enemy: 4; fitness: 30.023649090702065; player life: 0; enemy life: 60.0; time: 394
+
+RUN: run status: enemy: 4; fitness: 88.92875562139875; player life: 57.400000000000325; enemy life: 0; time: 908
+
+RUN: run status: enemy: 4; fitness: 21.144928077797573; player life: 0; enemy life: 70.0; time: 349
+
+RUN: run status: enemy: 4; fitness: 3.269900217026426; player life: 0; enemy life: 90.0; time: 308
+
+RUN: run status: enemy: 4; fitness: 21.179917069647637; player life: 0; enemy life: 70.0; time: 337
+
+RUN: run status: enemy: 4; fitness: 3.1001026464175085; player life: 0; enemy life: 90.0; time: 365
+
+RUN: run status: enemy: 4; fitness: 3.028738160209538; player life: 0; enemy life: 90.0; time: 392
+
+RUN: run status: enemy: 4; fitness: 2.9526278209537224; player life: 0; enemy life: 90.0; time: 423
+
+RUN: run status: enemy: 4; fitness: 3.299556426609313; player life: 0; enemy life: 90.0; time: 299
+
+RUN: run status: enemy: 4; fitness: 21.15645558296864; player life: 0; enemy life: 70.0; time: 345
+
+RUN: run status: enemy: 4; fitness: 21.23794861721982; player life: 0; enemy life: 70.0; time: 318
+
+RUN: run status: enemy: 4; fitness: 29.89744140538643; player life: 0; enemy life: 60.0; time: 447
+
+RUN: run status: enemy: 4; fitness: 30.051965010819355; player life: 0; enemy life: 60.0; time: 383
+
+RUN: run status: enemy: 4; fitness: 21.351025761838795; player life: 0; enemy life: 70.0; time: 284
+
+RUN: run status: enemy: 4; fitness: 3.081106145726854; player life: 0; enemy life: 90.0; time: 372
+
+RUN: run status: enemy: 4; fitness: 21.1888590070233; player life: 0; enemy life: 70.0; time: 334
+
+RUN: run status: enemy: 4; fitness: 12.182888840036796; player life: 0; enemy life: 80.0; time: 336
+
+RUN: run status: enemy: 4; fitness: 88.62064419553958; player life: 55.00000000000032; enemy life: 0; time: 972
+
+RUN: run status: enemy: 4; fitness: 3.028738160209538; player life: 0; enemy life: 90.0; time: 392
+
+RUN: run status: enemy: 4; fitness: 38.57675303646648; player life: 0; enemy life: 50.0; time: 616
+
+RUN: run status: enemy: 4; fitness: 3.3335733118875677; player life: 0; enemy life: 90.0; time: 289
+
+RUN: run status: enemy: 4; fitness: 3.17399989261955; player life: 0; enemy life: 90.0; time: 339
+
+RUN: run status: enemy: 4; fitness: 2.9526278209537224; player life: 0; enemy life: 90.0; time: 423
+
+RUN: run status: enemy: 4; fitness: 3.168117522716483; player life: 0; enemy life: 90.0; time: 341
+
+RUN: run status: enemy: 4; fitness: 21.234808897215157; player life: 0; enemy life: 70.0; time: 319
+
+RUN: run status: enemy: 4; fitness: 56.30915772258144; player life: 0; enemy life: 30.0; time: 805
+
+RUN: run status: enemy: 4; fitness: 3.3335733118875677; player life: 0; enemy life: 90.0; time: 289
+
+RUN: run status: enemy: 4; fitness: 2.9526278209537224; player life: 0; enemy life: 90.0; time: 423
+
+RUN: run status: enemy: 4; fitness: 21.046756665712216; player life: 0; enemy life: 70.0; time: 385
+
+MESSAGE: state has been saved to files.
+
+########## Simulation state - INI ###########
+
+# solutions # : LOADED 
+
+# sensors # : 20
+
+ ------  parameters ------  
+
+# contact hurt (training agent) # : player
+
+multiple mode: no
+
+enemies list: 4
+
+current enemy: 4
+
+player mode: ai
+
+enemy mode: static
+
+level: 2
+
+clock precision: low
+
+inputs coded: no
+
+random initialization: no
+
+expiration time: 3000
+
+speed: fastest
+
+load player: yes
+
+load enemy: yes
+
+sound: off
+
+overture time: 100
+
+logs: on
+
+save logs: yes
+
+########## Simulation state - END ###########
