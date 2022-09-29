@@ -318,6 +318,6 @@ if __name__ == "__main__":
         file = open(experiment_name+'/neuroended', 'w')  # saves control (simulation has ended) file for bash loop file
         file.close()
 
-        np.savetxt(experiment_name+'/total_best.txt', total_best)
+        np.savetxt(experiment_name+'/total_best_'+str(j)+'.txt', total_best)
 
         env.state_to_log() # checks environment state
