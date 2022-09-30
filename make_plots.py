@@ -53,11 +53,11 @@ plt.plot(x, maxs_steady, label = "max fitness steadystate")
 plt.plot(x, means_generational, label = "mean fitness generational")
 plt.plot(x, maxs_generational, label = "max fitness generational")
 
-plt.fill_between(x, means_steady-var_means_steady, means_steady+var_means_steady, alpha = 0.2)
-plt.fill_between(x, maxs_steady-var_maxs_steady, maxs_steady+var_maxs_steady, alpha = 0.2)
+plt.fill_between(x, means_steady-var_means_steady, means_steady+var_means_steady, alpha = 0.1)
+plt.fill_between(x, maxs_steady-var_maxs_steady, maxs_steady+var_maxs_steady, alpha = 0.1)
 
-plt.fill_between(x, means_generational-var_means_generational, means_generational+var_means_generational, alpha = 0.2)
-plt.fill_between(x, maxs_generational-var_maxs_generational, maxs_generational+var_maxs_generational, alpha = 0.2)
+plt.fill_between(x, means_generational-var_means_generational, means_generational+var_means_generational, alpha = 0.1)
+plt.fill_between(x, maxs_generational-var_maxs_generational, maxs_generational+var_maxs_generational, alpha = 0.1)
 
 plt.xlabel("Generation")
 plt.ylabel("Fitness")
