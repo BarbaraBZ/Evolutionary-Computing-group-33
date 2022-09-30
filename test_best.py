@@ -8,7 +8,7 @@ import random
 import time
 import concurrent.futures
 
-experiment_name = 'generational_7'  #make equal to the experiment you're doing
+experiment_name = 'steadystate_7'  #make equal to the experiment you're doing
 if not os.path.exists(experiment_name):
     os.makedirs(experiment_name)
 
