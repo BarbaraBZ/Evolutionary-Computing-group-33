@@ -8,7 +8,7 @@ import random
 import time
 import concurrent.futures
 
-experiment_name = 'steadystate_7'  #make equal to the experiment you're doing
+experiment_name = 'steadystate_4'  #make equal to the experiment you're doing
 if not os.path.exists(experiment_name):
     os.makedirs(experiment_name)
 
@@ -17,19 +17,17 @@ headless = True
 if headless:
     os.environ["SDL_VIDEODRIVER"] = "dummy"
 
-hidden = 10      # number of hidden nodes in the neural network
-runs = 10
+hidden = 10 # number of hidden nodes in the neural network
+runs = 10   # number of runs
 
 # initializes environment with ai player using random controller, playing against static enemy
 env = Environment(experiment_name=experiment_name,
-                  enemies=[7],      #change to correct enemy
+                  enemies=[4],      #change to correct enemy
                   playermode='ai',
                   player_controller=player_controller(hidden),
                   enemymode="static",
                   level=2,
                   speed="fastest")
-
-####### define functions #######
 
 # running a simulation
 def sim(x):
@@ -45,9 +43,9 @@ if __name__ == "__main__":
     file_aux = open(experiment_name+'/best_results_'+experiment_name+'.csv','a')
     file_aux.write('run,mean')
     for j in range(1, runs+1):
-        # loads file with the best solution for testing
         total_fit = []
         for i in range(5):
+            # loads file with the best solution for testing
             bsol = np.loadtxt(experiment_name+'/total_best_'+str(j)+'.txt')
             print( '\n RUN'+str(j)+' SIM '+str(i+1)+ '\n')
             total_fit.append(evaluate([bsol]))
