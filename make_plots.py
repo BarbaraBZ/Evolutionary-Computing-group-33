@@ -4,8 +4,8 @@ import os
 from os.path import exists
 from matplotlib import pyplot as plt
 
-experiment_name1 = "steadystate_enemy6"
-experiment_name2 = ""
+experiment_name1 = "steadystate_6"
+experiment_name2 = "generational_6"
 file_name_csv = "results.csv"
 runs = 10
 generations = 10
@@ -25,7 +25,7 @@ def txt_to_csv(experiment_name):
     return results
 
 def line_plot(runs, generations, experiment_name):
-    df = txt_to_csv()
+    df = txt_to_csv(experiment_name)
     mean_per_gen = np.zeros(generations)
     var_per_gen = np.zeros(generations)
     max_per_gen = np.zeros(generations)
@@ -53,11 +53,11 @@ plt.plot(x, maxs_steady, label = "max fitness steadystate")
 plt.plot(x, means_generational, label = "mean fitness generational")
 plt.plot(x, maxs_generational, label = "max fitness generational")
 
-plt.fill_between(x, means_steady-var_means_steady, means_steady+var_means_steady, alpha = 0.2)
-plt.fill_between(x, maxs_steady-var_maxs, maxs+var_maxs_steady, alpha = 0.2)
+plt.fill_between(x, means_steady-var_means_steady, means_steady+var_means_steady, alpha = 0.1)
+plt.fill_between(x, maxs_steady-var_maxs_steady, maxs_steady+var_maxs_steady, alpha = 0.1)
 
-plt.fill_between(x, means_generational-var_means_generational, means_generational+var_means_generational, alpha = 0.2)
-plt.fill_between(x, maxs_generational-var_maxs_generational, maxs_generational+var_maxs_generational, alpha = 0.2)
+plt.fill_between(x, means_generational-var_means_generational, means_generational+var_means_generational, alpha = 0.1)
+plt.fill_between(x, maxs_generational-var_maxs_generational, maxs_generational+var_maxs_generational, alpha = 0.1)
 
 plt.xlabel("Generation")
 plt.ylabel("Fitness")
