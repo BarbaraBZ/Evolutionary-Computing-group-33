@@ -8,7 +8,7 @@ import random
 import time
 import concurrent.futures
 
-experiment_name = 'steadystate_4'  #make equal to the experiment you're doing
+experiment_name = 'generational_4'  #make equal to the experiment you're doing
 if not os.path.exists(experiment_name):
     os.makedirs(experiment_name)
 
@@ -32,7 +32,8 @@ env = Environment(experiment_name=experiment_name,
 # running a simulation
 def sim(x):
     fitness, phealth, ehealth, time = env.play(pcont=x)
-    return fitness
+    gain = phealth - ehealth
+    return gain
 
 # evaluate fitness
 def evaluate(x):
@@ -40,7 +41,7 @@ def evaluate(x):
 
 
 if __name__ == "__main__":
-    file_aux = open(experiment_name+'/best_results_'+experiment_name+'.csv','a')
+    file_aux = open(experiment_name+'/best_results_'+experiment_name+'_test.csv','a')
     file_aux.write('run,mean')
     for j in range(1, runs+1):
         total_fit = []
@@ -49,6 +50,6 @@ if __name__ == "__main__":
             bsol = np.loadtxt(experiment_name+'/total_best_'+str(j)+'.txt')
             print( '\n RUN'+str(j)+' SIM '+str(i+1)+ '\n')
             total_fit.append(evaluate([bsol]))
-        fitness = np.mean(total_fit)
-        file_aux.write('\n' + str(j) + ',' + str(fitness))
+        ind_gain = np.mean(total_fit)
+        file_aux.write('\n' + str(j) + ',' + str(ind_gain))
     file_aux.close()
